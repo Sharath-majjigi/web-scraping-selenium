@@ -6,6 +6,8 @@ from sqlalchemy import Column, Integer, String, Boolean, Float, create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy.orm import sessionmaker
 import random
+from flask import Flask
+
 
 # Open connection to SQLite database
 conn = sqlite3.connect('iphone_12_reviews.db')
@@ -88,10 +90,9 @@ for page_num in range(1, 6):
         c.execute("INSERT INTO iphone_reviews_1 VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (id,title, text, style_name, color, verified_purchase,rating,sentiment_score))
 
     # commit the changes to the database after each page
-    conn.commit()
-
-    
+    conn.commit()   
 
 session.commit()
+
 
 
